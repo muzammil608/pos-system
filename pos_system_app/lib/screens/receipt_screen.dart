@@ -96,6 +96,7 @@ class ReceiptScreen extends StatelessWidget {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16)),
                     const Text("Come again 😊"),
+                    const Text("Orion-Solutions"),
                   ],
                 ),
               ),
