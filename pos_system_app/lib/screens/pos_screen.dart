@@ -61,7 +61,7 @@ class _PosScreenState extends State<PosScreen> {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-        title: const Text("POS System"),
+        title: const Text("Orion POS"),
         actions: [
           IconButton(
               icon: const Icon(Icons.kitchen),

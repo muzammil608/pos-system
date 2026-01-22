@@ -13,6 +13,8 @@ void main() {
 }
 
 class PosApp extends StatelessWidget {
+  const PosApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
