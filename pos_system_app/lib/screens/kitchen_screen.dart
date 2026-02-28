@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../core/app_colors.dart';
 import '../providers/cart_provider.dart';
 
 class KitchenScreen extends StatelessWidget {
@@ -8,62 +7,50 @@ class KitchenScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final allOrders = context.watch<CartProvider>().orders;
-    final pendingOrders =
-        allOrders.where((o) => o["status"] == "pending").toList();
+    final provider = Provider.of<CartProvider>(context);
+
+    final pendingOrders = provider.pendingOrders;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: AppBar(
-          backgroundColor: AppColors.primary,
-          title: const Text("Kitchen Display")),
+        title: const Text("Kitchen"),
+      ),
       body: pendingOrders.isEmpty
-          ? const Center(child: Text("No Pending Orders"))
-          : GridView.builder(
-              padding: const EdgeInsets.all(16),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 1.4,
+          ? const Center(
+              child: Text(
+                "No Pending Orders",
+                style: TextStyle(fontSize: 20),
               ),
+            )
+          : ListView.builder(
               itemCount: pendingOrders.length,
-              itemBuilder: (_, i) {
-                final order = pendingOrders[i];
-                final List<dynamic> items = order["items"] ?? [];
+              itemBuilder: (_, index) {
+                final order = pendingOrders[index];
+
+                final items = order["items"] as List<dynamic>? ?? [];
 
                 return Card(
+                  margin: const EdgeInsets.all(10),
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                            "Order #${order["id"].toString().substring(order["id"].toString().length - 5)}",
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
-                        const Divider(),
-                        Expanded(
-                          child: ListView(
-                            children: items
-                                .map((item) => Text(
-                                    "${item["name"]} x${item["qty"]}",
-                                    style: const TextStyle(fontSize: 16)))
-                                .toList(),
-                          ),
+                          "Order ID: ${order["id"]}",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orange),
-                            onPressed: () => context
-                                .read<CartProvider>()
-                                .markReady(order["id"]),
-                            child: const Text("READY",
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
+                        const SizedBox(height: 10),
+                        ...items.map((item) {
+                          return Text("${item["name"]} x${item["qty"]}");
+                        }),
+                        const SizedBox(height: 10),
+                        ElevatedButton(
+                          onPressed: () {
+                            provider.markReady(order["id"]);
+                          },
+                          child: const Text("Mark Ready"),
+                        )
                       ],
                     ),
                   ),

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "179737203058",
+    "project_id": "pos-system-app-a3249",
+    "storage_bucket": "pos-system-app-a3249.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179737203058:android:f5216c6f89d2e594a28deb",
+        "android_client_info": {
+          "package_name": "com.example.pos_system_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179737203058-rveaa5d3iqr8s0ljmkul9ttd3ltrpeet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pos_system_app",
+            "certificate_hash": "05d6042b61f782b89de3207c76093945e37bb203"
+          }
+        },
+        {
+          "client_id": "179737203058-9rhc83v16k8mugible1ru9pcrc6t380q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVZS1dnA6C1Et2GNlNSpUP9sGzoGQYc-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179737203058-9rhc83v16k8mugible1ru9pcrc6t380q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179737203058-h5dcfsii94bu9pe97g470oo2trs880pb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.posSystemApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
